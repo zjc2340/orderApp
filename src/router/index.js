@@ -1,29 +1,46 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import Goods from "../pages/index/Goods.vue"
 Vue.use(VueRouter)
-
-  const routes = [
-  {
+export default new VueRouter({
+  routes:[{
     path: '/',
-    name: 'Home',
-    component: Home
+    name: "goods",
+    component: Goods,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    path: '/evaluation',
+    name: "evaluation",
+    component: (reslove) => require(["../pages/index/Evaluation.vue"],reslove)
+  },
+  {
+    path: '/merchant',
+    name: "merchant",
+    component: (reslove) => require(["../pages/index/Merchant.vue"],reslove)
+  }]
 })
+// const routes = [{
+//   path: '/',
+//   name: "index",
+//   component: Index,
+// },{
+//   path: '/goods',
+//   name: "goods",
+//   component: (reslove) => require(["../pages/index/Goods.vue"],reslove)
+// },
+// {
+//   path: '/evaluation',
+//   name: "valuation",
+//   component: (reslove) => require(["../pages/index/Evaluation.vue"],reslove)
+// },
+// {
+//   path: '/merchant',
+//   name: "merchant",
+//   component: (reslove) => require(["../pages/index/Merchant.vue"],reslove)
+// }
+// ]
+// const router = new VueRouter({
+//   routes
+// })
 
-export default router
+// export default router
